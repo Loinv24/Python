@@ -61,7 +61,18 @@ def anh_trai_sinh_1997(filename):
         print(row)
 
 # Chức năng 4: Tính điểm trung bình của 'Đức Phúc' và tìm anh trai có điểm cao nhất
+import json
+
+def read_json(filename):
+    """Đọc dữ liệu từ tệp JSON và trả về nội dung."""
+    try:
+        with open(filename, 'r', encoding='utf-8') as file:
+            return json.load(file)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return None
+
 def diem_duc_phuc(filename):
+    # Đọc dữ liệu từ tệp JSON
     data = read_json(filename)
 
     # Kiểm tra nếu không đọc được dữ liệu
@@ -69,6 +80,7 @@ def diem_duc_phuc(filename):
         print(f"Error: Could not read or parse the JSON file '{filename}'. Please check if the file exists and is valid JSON.")
         return
 
+    # Khởi tạo các biến để lưu trữ tổng điểm, số lượng đội của Đức Phúc, và điểm cao nhất
     total_score = 0
     team_count = 0
     highest_score = 0
@@ -77,7 +89,7 @@ def diem_duc_phuc(filename):
 
     # Hàm thêm dữ liệu đội
     def add_team_data(team_name, members, score):
-        nonlocal total_score, team_count, highest_score, highest_team, round_count # Accessing outer scope variables
+        nonlocal total_score, team_count, highest_score, highest_team, round_count
         # Kiểm tra xem Đức Phúc có trong đội không
         if "Đức Phúc" in members:
             total_score += score
@@ -89,21 +101,22 @@ def diem_duc_phuc(filename):
                 highest_team = team_name
         round_count += 1  # Tăng số vòng
 
-    # Thêm dữ liệu các đội lần lượt, indented correctly within the function
-    add_team_data("Team_1", ["Đức Phúc", "Quân A.P", "Tage", "Phạm Đình Thái Ngân", "JSOL"], 67)
-    add_team_data("Team_2", ["Song Luân", "Isaac", "JSOL", "Dương Domic"], 95)
-    add_team_data("Team_3", ["Erik", "Quang Trung", "Captain Boy", "Phạm Đình Thái Ngân", "Quang Trung"], 68)
-    add_team_data("Team_4", ["Nicky", "Captain Boy", "Quang Trung", "Rhyder"], 88)
-    add_team_data("Team_5", ["Gin Tuấn Kiệt", "WEAN", "Gemini Hùng Huỳnh", "Pháp Kiều", "HIEUTHUHAI"], 82)
+    # Thêm dữ liệu các đội lần lượt
+    for team in data:
+        add_team_data(team["team_name"], team["members"], team["score"])
 
     # Tính điểm trung bình của Đức Phúc
     average_score = total_score / team_count if team_count > 0 else 0
 
     # Hiển thị kết quả
     print(f"Điểm trung bình của Đức Phúc là {average_score:.2f}")
-
     if highest_team:
         print(f"Đội có điểm cao nhất trong 5 vòng đầu tiên là {highest_team} với số điểm {highest_score}")
+
+# Gọi hàm với đường dẫn tệp JSON
+diem_duc_phuc('/tram/score.json')
+
+
 
 
 # Chức năng 5: Dừng chương trình
