@@ -1,0 +1,201 @@
+[
+    {
+        "team_name": "Team_1",
+        "members": [
+            "Đức Phúc",
+            "Quân A.P",
+            "Tage",
+            "Phạm Đình Thái Ngân",
+            "JSOL"
+        ],
+        "score": 67
+    },
+    {
+        "team_name": "Team_2",
+        "members": [
+            "Song Luân",
+            "Isaac",
+            "JSOL",
+            "Dương Domic"
+        ],
+        "score": 95
+    },
+    {
+        "team_name": "Team_3",
+        "members": [
+            "Erik",
+            "Quang Trung",
+            "Captain Boy",
+            "Phạm Đình Thái Ngân",
+            "Quang Trung"
+        ],
+        "score": 68
+    },
+    {
+        "team_name": "Team_4",
+        "members": [
+            "Nicky",
+            "Captain Boy",
+            "Quang Trung",
+            "Rhyder"
+        ],
+        "score": 88
+    },
+    {
+        "team_name": "Team_5",
+        "members": [
+            "Gin Tuấn Kiệt",
+            "WEAN",
+            "Gemini Hùng Huỳnh",
+            "Pháp Kiều",
+            "HIEUTHUHAI"
+        ],
+        "score": 82
+    },
+    {
+        "team_name": "Team_6",
+        "members": [
+            "HURRYKNG",
+            "Pháp Kiều",
+            "Quang Hùng MasterD",
+            "Vũ Thịnh"
+        ],
+        "score": 85
+    },
+    {
+        "team_name": "Team_7",
+        "members": [
+            "Đỗ Phú Quí",
+            "Ali Hoàng Dương",
+            "Rhyder",
+            "Gemini Hùng Huỳnh"
+        ],
+        "score": 93
+    },
+    {
+        "team_name": "Team_8",
+        "members": [
+            "Hải Đăng Doo",
+            "Captain Boy",
+            "Quang Trung",
+            "HURRYKNG",
+            "Gin Tuấn Kiệt"
+        ],
+        "score": 69
+    },
+    {
+        "team_name": "Team_9",
+        "members": [
+            "Isaac",
+            "Dương Domic",
+            "Công Dương",
+            "HIEUTHUHAI",
+            "Phạm Anh Duy"
+        ],
+        "score": 76
+    },
+    {
+        "team_name": "Team_10",
+        "members": [
+            "Phạm Đình Thái Ngân",
+            "Negav",
+            "Lou Hoàng",
+            "Dương Domic",
+            "JSOL"
+        ],
+        "score": 72
+    },
+    {
+        "team_name": "Team_11",
+        "members": [
+            "HURRYKNG",
+            "Rhyder",
+            "Anh Tú",
+            "WEAN",
+            "Dương Domic"
+        ],
+        "score": 94
+    },
+    {
+        "team_name": "Team_12",
+        "members": [
+            "Phạm Đình Thái Ngân",
+            "Pháp Kiều",
+            "Đức Phúc",
+            "Lou Hoàng",
+            "Nicky"
+        ],
+        "score": 55
+    },
+    {
+        "team_name": "Team_13",
+        "members": [
+            "Quân A.P",
+            "Phạm Anh Duy",
+            "Pháp Kiều",
+            "Anh Tú"
+        ],
+        "score": 62
+    },
+    {
+        "team_name": "Team_14",
+        "members": [
+            "Anh Tú Atus",
+            "Phạm Đình Thái Ngân",
+            "Gemini Hùng Huỳnh",
+            "Ali Hoàng Dương"
+        ],
+        "score": 53
+    },
+    {
+        "team_name": "Team_15",
+        "members": [
+            "Lou Hoàng",
+            "Negav",
+            "Hải Đăng Doo",
+            "Phạm Anh Duy"
+        ],
+        "score": 80
+    },
+    {
+        "team_name": "Team_16",
+        "members": [
+            "Vũ Thịnh",
+            "Tage",
+            "JSOL",
+            "Gin Tuấn Kiệt"
+        ],
+        "score": 56
+    },
+    {
+        "team_name": "Team_17",
+        "members": [
+            "Song Luân",
+            "JSOL",
+            "Gin Tuấn Kiệt",
+            "Erik"
+        ],
+        "score": 83
+    },
+    {
+        "team_name": "Team_18",
+        "members": [
+            "HIEUTHUHAI",
+            "Pháp Kiều",
+            "Đỗ Phú Quí",
+            "Đức Phúc"
+        ],
+        "score": 74
+    },
+    {
+        "team_name": "Team_19",
+        "members": [
+            "JSOL",
+            "Negav",
+            "Anh Tú Atus",
+            "Phạm Anh Duy",
+            "Erik"
+        ],
+        "score": 93
+    }
+]
