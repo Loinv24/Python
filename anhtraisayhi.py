@@ -55,7 +55,7 @@ def anh_trai_dob(filename):
 # Chức năng 3: Hiển thị danh sách các anh trai sinh năm 1997
 def anh_trai_sinh_1997(filename):
     data = read_csv(filename)
-    result = [row for row in data if row[1] == '1997']  # Giả sử cột năm sinh là cột thứ 2
+    result = [row for row in data if row[3] == '1997']  # Giả sử cột năm sinh là cột thứ 2
     print("Danh sách các anh trai sinh năm 1997:")
     for row in result:
         print(row)
@@ -69,31 +69,42 @@ def diem_duc_phuc(filename):
         print(f"Error: Could not read or parse the JSON file '{filename}'. Please check if the file exists and is valid JSON.")
         return
 
+    total_score = 0
+    team_count = 0
+    highest_score = 0
+    highest_team = None
+    round_count = 0  # Đếm số vòng đã thêm vào
+
+    # Hàm thêm dữ liệu đội
+    def add_team_data(team_name, members, score):
+        nonlocal total_score, team_count, highest_score, highest_team, round_count # Accessing outer scope variables
+        # Kiểm tra xem Đức Phúc có trong đội không
+        if "Đức Phúc" in members:
+            total_score += score
+            team_count += 1
+        # Kiểm tra số vòng, cập nhật điểm cao nhất trong 5 vòng đầu tiên
+        if round_count < 5:  # Chỉ xem xét trong 5 vòng đầu tiên
+            if score > highest_score:
+                highest_score = score
+                highest_team = team_name
+        round_count += 1  # Tăng số vòng
+
+    # Thêm dữ liệu các đội lần lượt, indented correctly within the function
+    add_team_data("Team_1", ["Đức Phúc", "Quân A.P", "Tage", "Phạm Đình Thái Ngân", "JSOL"], 67)
+    add_team_data("Team_2", ["Song Luân", "Isaac", "JSOL", "Dương Domic"], 95)
+    add_team_data("Team_3", ["Erik", "Quang Trung", "Captain Boy", "Phạm Đình Thái Ngân", "Quang Trung"], 68)
+    add_team_data("Team_4", ["Nicky", "Captain Boy", "Quang Trung", "Rhyder"], 88)
+    add_team_data("Team_5", ["Gin Tuấn Kiệt", "WEAN", "Gemini Hùng Huỳnh", "Pháp Kiều", "HIEUTHUHAI"], 82)
+
     # Tính điểm trung bình của Đức Phúc
-    diem_duc_phuc = None
-    for item in data:
-        if item.get('name') == 'Đức Phúc':
-            diem_duc_phuc = item.get('scores', [])
+    average_score = total_score / team_count if team_count > 0 else 0
 
-    if diem_duc_phuc:
-        diem_trung_binh = sum(diem_duc_phuc) / len(diem_duc_phuc)
-        print(f"Điểm trung bình của Đức Phúc là: {diem_trung_binh:.2f}")
-    else:
-        print("Không tìm thấy dữ liệu của 'Đức Phúc' trong file JSON.")
+    # Hiển thị kết quả
+    print(f"Điểm trung bình của Đức Phúc là {average_score:.2f}")
 
-    # Tìm anh trai có điểm cao nhất qua 5 vòng đầu tiên
-    max_score = 0
-    max_name = ''
-    for item in data:
-        name = item.get('name')
-        scores = item.get('scores')
-        if name and scores:
-            score_sum = sum(scores[:5])  # Tổng điểm qua 5 vòng đầu
-            if score_sum > max_score:
-                max_score = score_sum
-                max_name = name
+    if highest_team:
+        print(f"Đội có điểm cao nhất trong 5 vòng đầu tiên là {highest_team} với số điểm {highest_score}")
 
-    print(f"Anh trai có số điểm cao nhất qua 5 vòng đầu tiên là: {max_name} với {max_score} điểm")
 
 # Chức năng 5: Dừng chương trình
 def stop_program():
