@@ -28,7 +28,7 @@ def read_json(filename):
 # Chức năng 1: Thống kê số lượng anh trai theo nghề nghiệp
 def anh_trai_job(filename):
     data = read_csv(filename)
-    jobs = [row[2] for row in data]  # Giả sử cột nghề nghiệp là cột thứ 3
+    jobs = [row[1] for row in data]  # Giả sử cột nghề nghiệp là cột thứ 3
     job_count = Counter(jobs)
 
     # Vẽ biểu đồ quạt
@@ -40,7 +40,7 @@ def anh_trai_job(filename):
 # Chức năng 2: Thống kê số lượng anh trai theo năm sinh
 def anh_trai_dob(filename):
     data = read_csv(filename)
-    years_of_birth = [row[1] for row in data]  # Giả sử cột năm sinh là cột thứ 2
+    years_of_birth = [row[3] for row in data]  # Giả sử cột năm sinh là cột thứ 2
     year_count = Counter(years_of_birth)
 
     # Vẽ biểu đồ cột
@@ -55,7 +55,7 @@ def anh_trai_dob(filename):
 # Chức năng 3: Hiển thị danh sách các anh trai sinh năm 1997
 def anh_trai_sinh_1997(filename):
     data = read_csv(filename)
-    result = [row for row in data if row[1] == '1997']  # Giả sử cột năm sinh là cột thứ 2
+    result = [row for row in data if row[3] == '1997']  
     print("Danh sách các anh trai sinh năm 1997:")
     for row in result:
         print(row)
