@@ -6,7 +6,7 @@ from collections import Counter
 
 # Hàm đọc file CSV
 def read_csv(filename):
-    with open(filename, 'r') as file:
+    with open(filename, 'r', encoding='utf-8') as file:
         reader = csv.reader(file)
         next(reader)  # Bỏ qua dòng tiêu đề
         data = []
@@ -16,13 +16,13 @@ def read_csv(filename):
 
 # Hàm đọc file JSON
 def read_json(filename):
+    """Đọc dữ liệu từ tệp JSON và trả về nội dung."""
     try:
-        with open(filename, 'r') as file:
+        with open(filename, 'r', encoding='utf-8') as file:
             data = json.load(file)
         return data
-    except json.JSONDecodeError as e:
+    except (FileNotFoundError, json.JSONDecodeError) as e:
         print(f"Error decoding JSON file: {e}")
-        print(f"Please check the file for syntax errors, especially around line {e.lineno}, column {e.colno}.")
         return None
 
 # Chức năng 1: Thống kê số lượng anh trai theo nghề nghiệp
@@ -55,22 +55,12 @@ def anh_trai_dob(filename):
 # Chức năng 3: Hiển thị danh sách các anh trai sinh năm 1997
 def anh_trai_sinh_1997(filename):
     data = read_csv(filename)
-    result = [row for row in data if row[3] == '1997']  # Giả sử cột năm sinh là cột thứ 2
+    result = [row for row in data if row[1] == '1997']  # Giả sử cột năm sinh là cột thứ 2
     print("Danh sách các anh trai sinh năm 1997:")
     for row in result:
         print(row)
 
 # Chức năng 4: Tính điểm trung bình của 'Đức Phúc' và tìm anh trai có điểm cao nhất
-import json
-
-def read_json(filename):
-    """Đọc dữ liệu từ tệp JSON và trả về nội dung."""
-    try:
-        with open(filename, 'r', encoding='utf-8') as file:
-            return json.load(file)
-    except (FileNotFoundError, json.JSONDecodeError):
-        return None
-
 def diem_duc_phuc(filename):
     # Đọc dữ liệu từ tệp JSON
     data = read_json(filename)
@@ -103,7 +93,8 @@ def diem_duc_phuc(filename):
 
     # Thêm dữ liệu các đội lần lượt
     for team in data:
-        add_team_data(team["team_name"], team["members"], team["score"])
+        if "team_name" in team and "members" in team and "score" in team:
+            add_team_data(team["team_name"], team["members"], team["score"])
 
     # Tính điểm trung bình của Đức Phúc
     average_score = total_score / team_count if team_count > 0 else 0
@@ -112,12 +103,6 @@ def diem_duc_phuc(filename):
     print(f"Điểm trung bình của Đức Phúc là {average_score:.2f}")
     if highest_team:
         print(f"Đội có điểm cao nhất trong 5 vòng đầu tiên là {highest_team} với số điểm {highest_score}")
-
-# Gọi hàm với đường dẫn tệp JSON
-diem_duc_phuc('/tram/score.json')
-
-
-
 
 # Chức năng 5: Dừng chương trình
 def stop_program():
